@@ -7,8 +7,8 @@ import matplotlib
 import matplotlib.pyplot as plt
 
 from helpers.treebank import StanfordSentiment
-from q3c_word2vec import *
-from q3d_sgd import *
+from q2c_word2vec import *
+from q2d_sgd import *
 
 # Check Python Version
 assert sys.version_info[0] == 3

@@ -14,14 +14,17 @@ def softmax(x):
     orig_shape = x.shape
 
     if len(x.shape) > 1:
-        x -= np.max(x, axis=1, keepdims=True)
-        exp_x = np.exp(x)
-        x = exp_x / np.sum(exp_x, axis=1, keepdims=True)
+        # Matrix
+        max_in_rows = np.max(x, axis=1, keepdims=True)
+        x = np.exp(x - max_in_rows)
+        sum_of_rows = np.sum(x, axis=1, keepdims=True)
+        x = x / sum_of_rows
     else:
+        # Vector
         x = x - np.max(x)
-        sumi = sum(np.exp(x))
-        x = np.exp(x) / sumi
-    
+        x = np.exp(x)
+        x = x / np.sum(x)
+
     assert x.shape == orig_shape
     return x
 
